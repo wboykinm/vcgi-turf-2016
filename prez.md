@@ -143,3 +143,14 @@ This time working from [a critical real-world example](https://github.com/morgan
 ---
 
 . . . and [adapting the process for some local data](https://github.com/morganherlocker/nepal-damage-analysis).
+
+---
+
+Questions?
+
+---
+
+Hit me up:
+
+- bill@faraday.io
+- @vtcraghead on Twitter
