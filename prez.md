@@ -12,10 +12,13 @@ Plan:
 - *How we got here*
 - Client side geoprocessing
 - Server side geoprocessing
+- Where next?
 
 ---
 
 1993: Xerox PARC
+
+---
 
 ![xerox](https://pbs.twimg.com/media/CjP7iSwUgAAJ0Ib.jpg)
 
@@ -49,6 +52,7 @@ Plan:
 ![biden](http://images.mentalfloss.com/sites/default/files/styles/insert_main_wide_image/public/giphy.gif)
 
 ---
+
 2016: 
 
 It's actually a thing: 
@@ -63,11 +67,35 @@ It's actually a thing:
 
 ---
 
-Powered by turf.js
+Powered by [turf.js](http://turfjs.org/)
 
 ---
 
 A javascript library for geoprocessing
+
+---
+
+Instead of this:
+
+---
+
+![arcpro](http://pro.arcgis.com/en/pro-app/help/analysis/geoprocessing/basics/GUID-8C7480F4-4E44-4E9E-89BE-421E823B767C-web.png)
+
+---
+
+This:
+
+---
+
+![hull](https://www.dropbox.com/s/ggkw3j7q1npp24t/Screenshot%202016-05-31%2017.13.16.png?dl=1)
+
+---
+
+Javascript
+
+---
+
+![afraid](https://66.media.tumblr.com/3946cce1923abd7bb5e1c5bc16681d6d/tumblr_nwr31xQQLL1thdow0o1_500.gif)
 
 ---
 
@@ -95,7 +123,7 @@ GeoJSON
 
 ---
 
-Looks like [this](http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b99523019a7aac&map=18/44.26249/-72.58071):
+Looks like [this](http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b99523019a7aac&map=18/44.26249/-72.58071)
 
 ---
 
@@ -106,6 +134,15 @@ Looks like [this](http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b9952301
 - How we got here
 - *Client side geoprocessing*
 - Server side geoprocessing
+- Where next?
+
+---
+
+Let's do a quick project, starting with [data creation](http://geojson.io/#map=8/43.997/-72.631)
+
+---
+
+Could you spot the server in there?
 
 ---
 
@@ -121,12 +158,26 @@ Analysis in support of a task, or to tell a story
 
 ---
 
-Working from [Vermont data](http://vcgi.vermont.gov/opendata) and a great [example of turf in use](https://www.mapbox.com/help/analysis-with-turf/)
+Nearest neighbor: [Post-swimming brews](http://wboykinm.github.io/vcgi-turf-2016/client/)
+
+---
+
+(Working from [Vermont data](http://vcgi.vermont.gov/opendata) and some [good documentation](https://www.mapbox.com/help/analysis-with-turf/))
+
+---
+
+Distance along a line: [Meet me halfway](http://wboykinm.github.io/midpoint/)
+
 ---
 
 - How we got here
 - Client side geoprocessing
 - *Server side geoprocessing*
+- Where next?
+
+---
+
+[node.js](http://nodejs.org/) is javascript, just built for servers. *turf works the same way [as a server-side tool](https://github.com/mapbox/turf-server-example)*
 
 ---
 
@@ -134,7 +185,19 @@ A more complicated problem, wth bigger data, needs more power than a browser can
 
 ---
 
-This time working from [a critical real-world example](https://github.com/morganherlocker/nepal-damage-analysis). . .
+[tile-reduce](https://github.com/mapbox/tile-reduce)
+
+---
+
+[Comparing two gigantic datasets](https://www.mapbox.com/blog/updating-map-runkeeper/)
+
+---
+
+![run](https://farm1.staticflickr.com/697/20479186309_df83c4d759_b.jpg)
+
+---
+
+[A time-sensitive analysis to save lives](https://github.com/morganherlocker/nepal-damage-analysis). . .
 
 ---
 
@@ -142,7 +205,28 @@ This time working from [a critical real-world example](https://github.com/morgan
 
 ---
 
-. . . and [adapting the process for some local data](https://github.com/morganherlocker/nepal-damage-analysis).
+- How we got here
+- Client side geoprocessing
+- Server side geoprocessing
+- *Where next?*
+
+---
+
+[Offline geoprocessing](http://www.fulcrumapp.com/blog/advanced-geospatial-calculations-with-turf/)
+
+---
+
+[Realtime](https://www.mapbox.com/blog/geofencing-london/) [geoprocessing](https://www.mapbox.com/bites/00223/)
+
+---
+
+Resources to get you started:
+
+- [javascript](https://www.codecademy.com/courses/getting-started-v2/0/1?curriculum_id=506324b3a7dffd00020bf661)
+- [node.js](http://nodeschool.io/#workshopper-list)
+- [turf.js](https://www.mapbox.com/help/analysis-with-turf/)
+- [dropchop.io](http://dropchop.io/)
+- [github](https://github.com/)
 
 ---
 

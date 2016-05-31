@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Foo</title>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+<style type='text/css'>
+body {
+  font-family: 'Arial Black';
+  background:#27366C;
+  background-size:100%;
+  color:#C5CDCF;
+  margin:0px;
+  padding:0px;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:10px;
+}
+
+em, a {
+  font-style:normal;
+  color:#DCC29C;
+}
+
+a {
+  background: #5CA8E9;
+  color:#E5E3E7;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0;
+  left:0;
+  padding-left:25px;
+  padding-right:25px;
+}
+
+</style>
+<script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), cur = 0, ti;
+    if (!s) return;
+    function go(n) {
+        cur = n;
+        var i = 1e3, e = s[n], t;
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        t = parseInt(e.dataset.timeToNext || 0, 10);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while (
+            e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) {
+            e.style.fontSize = (i -= 2) + 'px';
+            if (i < 0) break;
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++cur % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++cur)); }
+    function rev() { go(Math.max(0, --cur)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(
+            s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) cur = parse_hash() || cur;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== cur) go(c);
+    };
+    go(cur);
+};
+</script></head><body>
+<div><!--__Use 'http://www.macwright.org/biggie'__-->
+<h1 id="geoprocessing-in-a-web-browser-for-fun-and-profit">Geoprocessing in a Web Browser for Fun and Profit</h1>
+</div>
+<div><p>using <a href="http://turfjs.org/">turf.js</a> for spatial data crunching</p>
+</div>
+<div><p>Plan:</p>
+<ul>
+<li><em>How we got here</em></li>
+<li>Client side geoprocessing</li>
+<li>Server side geoprocessing</li>
+<li>Where next?</li>
+</ul>
+</div>
+<div><p>1993: Xerox PARC</p>
+</div>
+<div><p><img src="https://pbs.twimg.com/media/CjP7iSwUgAAJ0Ib.jpg" alt="xerox"></p>
+</div>
+<div><p>1998: ArcIMS</p>
+<p><img src="http://webhelp.esri.com/arcims/9.3/general/mergedprojects/arcxmlguide/elements/images/config_file_d1.gif" alt="arcims"></p>
+</div>
+<div><p>2004: Competition</p>
+<ul>
+<li>ArcGIS Server</li>
+<li>PostGIS + UMN MapServer</li>
+</ul>
+</div>
+<div><p>2005: Year G</p>
+<p><img src="http://blogoscoped.com/files/google-museum/48.jpg" alt="goog"></p>
+</div>
+<div><p>&quot;GIS in the browser&quot;</p>
+<p>2010:</p>
+</div>
+<div><p><img src="http://images.mentalfloss.com/sites/default/files/styles/insert_main_wide_image/public/giphy.gif" alt="biden"></p>
+</div>
+<div><p>2016: </p>
+<p>It&#39;s actually a thing: </p>
+</div>
+<div><p><img src="https://www.dropbox.com/s/71c9b3yyibimmnm/dropchop1.gif?dl=1" alt="buffer"></p>
+</div>
+<div><p><a href="http://dropchop.io/?gist=e1028889229343fa8ed8a6e74d21f5d0">Try it out on the great state of Vermont</a></p>
+</div>
+<div><p>Powered by <a href="http://turfjs.org/">turf.js</a></p>
+</div>
+<div><p>A javascript library for geoprocessing</p>
+</div>
+<div><p>Instead of this:</p>
+</div>
+<div><p><img src="http://pro.arcgis.com/en/pro-app/help/analysis/geoprocessing/basics/GUID-8C7480F4-4E44-4E9E-89BE-421E823B767C-web.png" alt="arcpro"></p>
+</div>
+<div><p>This:</p>
+</div>
+<div><p><img src="https://www.dropbox.com/s/ggkw3j7q1npp24t/Screenshot%202016-05-31%2017.13.16.png?dl=1" alt="hull"></p>
+</div>
+<div><p>Javascript</p>
+</div>
+<div><p><img src="https://66.media.tumblr.com/3946cce1923abd7bb5e1c5bc16681d6d/tumblr_nwr31xQQLL1thdow0o1_500.gif" alt="afraid"></p>
+</div>
+<div><p>GeoJSON</p>
+</div>
+<div><pre><code>{
+  &quot;type&quot;: &quot;Feature&quot;,
+  &quot;properties&quot;: {
+    &quot;marker-color&quot;: &quot;#ab4ca9&quot;,
+    &quot;marker-size&quot;: &quot;large&quot;,
+    &quot;marker-symbol&quot;: &quot;town-hall&quot;,
+    &quot;name&quot;: &quot;Vermont State Capitol&quot;
+  },
+  &quot;geometry&quot;: {
+    &quot;type&quot;: &quot;Point&quot;,
+    &quot;coordinates&quot;: [
+      -72.5805115699768,
+      44.26252006240964
+    ]
+  }
+}
+</code></pre></div>
+<div><p>Looks like <a href="http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b99523019a7aac&amp;map=18/44.26249/-72.58071">this</a></p>
+</div>
+<div><p><img src="https://www.dropbox.com/s/6g0181ky5u7o702/Screenshot%202016-05-24%2021.26.48.png?dl=1" alt="cap"></p>
+</div>
+<div><ul>
+<li>How we got here</li>
+<li><em>Client side geoprocessing</em></li>
+<li>Server side geoprocessing</li>
+<li>Where next?</li>
+</ul>
+</div>
+<div><p>Let&#39;s do a quick project, starting with <a href="http://geojson.io/#map=8/43.997/-72.631">data creation</a></p>
+</div>
+<div><p>Could you spot the server in there?</p>
+</div>
+<div><p>Again, GIS in the web browser. LOL.</p>
+</div>
+<div><p><em>What do end users care about geoprocessing?</em></p>
+</div>
+<div><p>Analysis in support of a task, or to tell a story</p>
+</div>
+<div><p>Nearest neighbor: <a href="http://wboykinm.github.io/vcgi-turf-2016/client/">Post-swimming brews</a></p>
+</div>
+<div><p>(Working from <a href="http://vcgi.vermont.gov/opendata">Vermont data</a> and some <a href="https://www.mapbox.com/help/analysis-with-turf/">good documentation</a>)</p>
+</div>
+<div><p>Distance along a line: <a href="http://wboykinm.github.io/midpoint/">Meet me halfway</a></p>
+</div>
+<div><ul>
+<li>How we got here</li>
+<li>Client side geoprocessing</li>
+<li><em>Server side geoprocessing</em></li>
+<li>Where next?</li>
+</ul>
+</div>
+<div><p><a href="http://nodejs.org/">node.js</a> is javascript, just built for servers. <em>turf works the same way <a href="https://github.com/mapbox/turf-server-example">as a server-side tool</a></em></p>
+</div>
+<div><p>A more complicated problem, wth bigger data, needs more power than a browser can provide.</p>
+</div>
+<div><p><a href="https://github.com/mapbox/tile-reduce">tile-reduce</a></p>
+</div>
+<div><p><a href="https://www.mapbox.com/blog/updating-map-runkeeper/">Comparing two gigantic datasets</a></p>
+</div>
+<div><p><img src="https://farm1.staticflickr.com/697/20479186309_df83c4d759_b.jpg" alt="run"></p>
+</div>
+<div><p><a href="https://github.com/morganherlocker/nepal-damage-analysis">A time-sensitive analysis to save lives</a>. . .</p>
+</div>
+<div><p><img src="https://www.dropbox.com/s/fk4b1drr1xcma7q/Screenshot%202016-05-24%2017.10.57.png?dl=1" alt="nepal"></p>
+</div>
+<div><ul>
+<li>How we got here</li>
+<li>Client side geoprocessing</li>
+<li>Server side geoprocessing</li>
+<li><em>Where next?</em></li>
+</ul>
+</div>
+<div><p><a href="http://www.fulcrumapp.com/blog/advanced-geospatial-calculations-with-turf/">Offline geoprocessing</a></p>
+</div>
+<div><p><a href="https://www.mapbox.com/blog/geofencing-london/">Realtime</a> <a href="https://www.mapbox.com/bites/00223/">geoprocessing</a></p>
+</div>
+<div><p>Resources to get you started:</p>
+<ul>
+<li><a href="https://www.codecademy.com/courses/getting-started-v2/0/1?curriculum_id=506324b3a7dffd00020bf661">javascript</a></li>
+<li><a href="http://nodeschool.io/#workshopper-list">node.js</a></li>
+<li><a href="https://www.mapbox.com/help/analysis-with-turf/">turf.js</a></li>
+<li><a href="http://dropchop.io/">dropchop.io</a></li>
+<li><a href="https://github.com/">github</a></li>
+</ul>
+</div>
+<div><p>Questions?</p>
+</div>
+<div><p>Hit me up:</p>
+<ul>
+<li>bill@faraday.io</li>
+<li>@vtcraghead on Twitter</li>
+</ul>
+</div>
