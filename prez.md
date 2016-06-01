@@ -1,9 +1,14 @@
-<!--__Use 'http://www.macwright.org/biggie'__-->
-
+<hr>
 # Geoprocessing in a Web Browser for Fun and Profit
 <hr>
+June 1st 2016
 
-Bill Morris for VCGI, June 1st 2016
+---
+
+Me: Bill Morris 
+- Cartographer at [Faraday Inc](http://faraday.io)
+<hr>
+![nola](https://www.dropbox.com/s/sf87ts86y2h4mog/Screenshot%202016-06-01%2009.43.33.png?dl=1)
 
 ---
 
@@ -116,7 +121,7 @@ Javascript
 ---
 
 ```
-function bindenize() {
+function bidenize() {
   document.getElementById('topbar').innerHTML = 'Random Biden quote'
 }
 ```
