@@ -1,2 +1,2 @@
 # vcgi-turf-2016
-A walkthrough of using turf.js for geoprocessing on the web
+[An example-heavy walkthrough](http://wboykinm.github.io/vcgi-turf-2016/) of using turf.js for geoprocessing on the web
