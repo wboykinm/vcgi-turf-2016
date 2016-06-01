@@ -107,6 +107,9 @@ window.onload = function() {
 </script></head><body>
 <div><!--__Use 'http://www.macwright.org/biggie'__-->
 <h1 id="geoprocessing-in-a-web-browser-for-fun-and-profit">Geoprocessing in a Web Browser for Fun and Profit</h1>
+<hr>
+
+<p>Bill Morris for VCGI, June 1st 2016</p>
 </div>
 <div><p>using <a href="http://turfjs.org/">turf.js</a> for spatial data crunching</p>
 </div>
@@ -118,37 +121,48 @@ window.onload = function() {
 <li>Where next?</li>
 </ul>
 </div>
+<div><p>GIS + the internet: a lightning history</p>
+</div>
 <div><p>1993: Xerox PARC</p>
 </div>
 <div><p><img src="https://pbs.twimg.com/media/CjP7iSwUgAAJ0Ib.jpg" alt="xerox"></p>
 </div>
-<div><p>1998: ArcIMS</p>
-<p><img src="http://webhelp.esri.com/arcims/9.3/general/mergedprojects/arcxmlguide/elements/images/config_file_d1.gif" alt="arcims"></p>
+<div><p>~2000: </p>
+<ul>
+<li>GeoServer</li>
+<li>ArcIMS
+<img src="http://webhelp.esri.com/arcims/9.3/general/mergedprojects/arcxmlguide/elements/images/config_file_d1.gif" alt="arcims"></li>
+</ul>
 </div>
-<div><p>2004: Competition</p>
+<div><p>2004: Complexity increases</p>
 <ul>
 <li>ArcGIS Server</li>
 <li>PostGIS + UMN MapServer</li>
+<li>Others catching on . . .</li>
 </ul>
 </div>
 <div><p>2005: Year G</p>
 <p><img src="http://blogoscoped.com/files/google-museum/48.jpg" alt="goog"></p>
 </div>
+<div><p>[a.k.a. Year of The Tile, a.k.a. The Resurrection of Gerardus]</p>
+</div>
 <div><p>&quot;GIS in the browser&quot;</p>
 <p>2010:</p>
+</div>
+<div><p><img src="https://www.dropbox.com/s/jt77sl10fv1dzkj/Screenshot%202016-05-31%2022.06.17.png?dl=1" alt="gis">
+<em><a href="http://www.slideshare.net/dbouwman/usability-in-the-geoweb-presentation/22-most_WebGIS_sites_are">via Dave Bouwman</a></em></p>
 </div>
 <div><p><img src="http://images.mentalfloss.com/sites/default/files/styles/insert_main_wide_image/public/giphy.gif" alt="biden"></p>
 </div>
 <div><p>2016: </p>
 <p>It&#39;s actually a thing: </p>
 </div>
-<div><p><img src="https://www.dropbox.com/s/71c9b3yyibimmnm/dropchop1.gif?dl=1" alt="buffer"></p>
-</div>
-<div><p><a href="http://dropchop.io/?gist=e1028889229343fa8ed8a6e74d21f5d0">Try it out on the great state of Vermont</a></p>
+<div><p><img src="https://www.dropbox.com/s/71c9b3yyibimmnm/dropchop1.gif?dl=1" alt="buffer">
+<em><a href="http://dropchop.io/?gist=e1028889229343fa8ed8a6e74d21f5d0">Try it out on the great state of Vermont</a></em></p>
 </div>
 <div><p>Powered by <a href="http://turfjs.org/">turf.js</a></p>
 </div>
-<div><p>A javascript library for geoprocessing</p>
+<div><p>A javascript library for live, client-side geoprocessing</p>
 </div>
 <div><p>Instead of this:</p>
 </div>
@@ -162,9 +176,14 @@ window.onload = function() {
 </div>
 <div><p><img src="https://66.media.tumblr.com/3946cce1923abd7bb5e1c5bc16681d6d/tumblr_nwr31xQQLL1thdow0o1_500.gif" alt="afraid"></p>
 </div>
+<div><pre><code>function bindenize() {
+  document.getElementById(&#39;topbar&#39;).innerHTML = &#39;Random Biden quote&#39;
+}
+</code></pre></div>
 <div><p>GeoJSON</p>
 </div>
-<div><pre><code>{
+<div><p>Looks like this in a text editor:</p>
+<pre><code>{
   &quot;type&quot;: &quot;Feature&quot;,
   &quot;properties&quot;: {
     &quot;marker-color&quot;: &quot;#ab4ca9&quot;,
@@ -181,7 +200,7 @@ window.onload = function() {
   }
 }
 </code></pre></div>
-<div><p>Looks like <a href="http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b99523019a7aac&amp;map=18/44.26249/-72.58071">this</a></p>
+<div><p>Looks like <a href="http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b99523019a7aac&amp;map=18/44.26249/-72.58071">this</a> in a web browser:</p>
 </div>
 <div><p><img src="https://www.dropbox.com/s/6g0181ky5u7o702/Screenshot%202016-05-24%2021.26.48.png?dl=1" alt="cap"></p>
 </div>
@@ -192,21 +211,38 @@ window.onload = function() {
 <li>Where next?</li>
 </ul>
 </div>
-<div><p>Let&#39;s do a quick project, starting with <a href="http://geojson.io/#map=8/43.997/-72.631">data creation</a></p>
+<div><p>Let&#39;s do a quick project, starting with <a href="http://geojson.io/#map=8/43.930/-72.724">data creation</a>:</p>
+</div>
+<div><p><img src="https://www.dropbox.com/s/gqeza9d01holk84/draw1.gif?dl=1" alt="draw1"></p>
+</div>
+<div><p>Then we <a href="http://dropchop.io/">bring the data over to dropchop</a> and do some basic turf geoprocessing on it:</p>
+</div>
+<div><p><img src="https://www.dropbox.com/s/ffr8zeabo5pulc8/process1.gif?dl=1" alt="process2"></p>
 </div>
 <div><p>Could you spot the server in there?</p>
 </div>
 <div><p>Again, GIS in the web browser. LOL.</p>
 </div>
+<div><p><img src="https://media.giphy.com/media/Kwi0Iu9MxxOgg/giphy.gif" alt="biden2"></p>
+</div>
 <div><p><em>What do end users care about geoprocessing?</em></p>
 </div>
-<div><p>Analysis in support of a task, or to tell a story</p>
+<div><p>Geoprocessing as part of a layperson&#39;s user experience:</p>
+<ul>
+<li>in support of a task</li>
+<li>telling a story</li>
+</ul>
 </div>
-<div><p>Nearest neighbor: <a href="http://wboykinm.github.io/vcgi-turf-2016/client/">Post-swimming brews</a></p>
+<div><p>Nearest neighbor: <a href="http://wboykinm.github.io/vcgi-turf-2016/client/">Post-swimming brews</a>
+<img src="https://www.dropbox.com/s/0dq4ima6l3402kw/Screenshot%202016-05-31%2022.52.32.png?dl=1" alt="near"></p>
 </div>
 <div><p>(Working from <a href="http://vcgi.vermont.gov/opendata">Vermont data</a> and some <a href="https://www.mapbox.com/help/analysis-with-turf/">good documentation</a>)</p>
 </div>
-<div><p>Distance along a line: <a href="http://wboykinm.github.io/midpoint/">Meet me halfway</a></p>
+<div><p>Distance along a line: <a href="http://wboykinm.github.io/midpoint/">Meet me halfway</a>
+<img src="https://www.dropbox.com/s/6359nswwvbkw2iw/Screenshot%202016-05-31%2022.48.35.png?dl=1" alt="distance"></p>
+</div>
+<div><p>Buffering: <a href="https://www.mapbox.com/bites/00082/?embed=true">Race route water fountains</a>
+<img src="https://www.dropbox.com/s/3flhucj3h77etg9/Screenshot%202016-05-31%2022.45.16.png?dl=1" alt="water"></p>
 </div>
 <div><ul>
 <li>How we got here</li>
@@ -215,11 +251,17 @@ window.onload = function() {
 <li>Where next?</li>
 </ul>
 </div>
-<div><p><a href="http://nodejs.org/">node.js</a> is javascript, just built for servers. <em>turf works the same way <a href="https://github.com/mapbox/turf-server-example">as a server-side tool</a></em></p>
+<div><p><a href="http://nodejs.org/">node.js</a> is javascript, just built for servers. <em>turf works the same way <a href="https://github.com/mapbox/turf-server-example">when used as a server-side tool</a></em></p>
+</div>
+<div><p>But . . .
+<img src="https://www.dropbox.com/s/g5njqmvgmr2udoj/Screenshot%202016-05-31%2022.16.45.png?dl=1" alt="Data from hell"></p>
 </div>
 <div><p>A more complicated problem, wth bigger data, needs more power than a browser can provide.</p>
 </div>
 <div><p><a href="https://github.com/mapbox/tile-reduce">tile-reduce</a></p>
+</div>
+<div><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tiled_web_map_Stevage.png/640px-Tiled_web_map_Stevage.png" alt="tiles">
+<em><a href="https://en.wikipedia.org/wiki/Tiled_web_map#/media/File:Tiled_web_map_Stevage.png">via Stevage</a></em></p>
 </div>
 <div><p><a href="https://www.mapbox.com/blog/updating-map-runkeeper/">Comparing two gigantic datasets</a></p>
 </div>
@@ -236,9 +278,14 @@ window.onload = function() {
 <li><em>Where next?</em></li>
 </ul>
 </div>
-<div><p><a href="http://www.fulcrumapp.com/blog/advanced-geospatial-calculations-with-turf/">Offline geoprocessing</a></p>
+<div><p><a href="http://www.fulcrumapp.com/blog/advanced-geospatial-calculations-with-turf/">Offline geoprocessing</a>
+<img src="http://www.fulcrumapp.com/assets/img/blog/turf-js-libs.png" alt="off"></p>
 </div>
-<div><p><a href="https://www.mapbox.com/blog/geofencing-london/">Realtime</a> <a href="https://www.mapbox.com/bites/00223/">geoprocessing</a></p>
+<div><p><a href="http://openlayers.org/en/latest/examples/turf.html">Linear referencing</a>
+<img src="https://www.dropbox.com/s/4dsv1ew8vzb249w/Screenshot%202016-05-31%2021.40.39.png?dl=1" alt="ref"></p>
+</div>
+<div><p><a href="https://www.mapbox.com/blog/geofencing-london/">Realtime</a> <a href="https://www.mapbox.com/bites/00223/">geoprocessing</a>
+<img src="https://www.dropbox.com/s/p4yrcusbrj0b532/Screenshot%202016-05-31%2021.42.37.png?dl=1" alt="rt"></p>
 </div>
 <div><p>Resources to get you started:</p>
 <ul>
@@ -253,7 +300,7 @@ window.onload = function() {
 </div>
 <div><p>Hit me up:</p>
 <ul>
-<li>bill@faraday.io</li>
-<li>@vtcraghead on Twitter</li>
+<li><a href="mailto:bill@faraday.io">bill@faraday.io</a></li>
+<li><a href="https://twitter.com/vtcraghead">@vtcraghead</a></li>
 </ul>
 </div>

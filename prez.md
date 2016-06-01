@@ -1,6 +1,9 @@
 <!--__Use 'http://www.macwright.org/biggie'__-->
 
 # Geoprocessing in a Web Browser for Fun and Profit
+<hr>
+
+Bill Morris for VCGI, June 1st 2016
 
 ---
 
@@ -16,6 +19,10 @@ Plan:
 
 ---
 
+GIS + the internet: a lightning history
+
+---
+
 1993: Xerox PARC
 
 ---
@@ -24,16 +31,19 @@ Plan:
 
 ---
 
-1998: ArcIMS
+~2000: 
 
+- GeoServer
+- ArcIMS
 ![arcims](http://webhelp.esri.com/arcims/9.3/general/mergedprojects/arcxmlguide/elements/images/config_file_d1.gif)
 
 ---
 
-2004: Competition
+2004: Complexity increases
 
 - ArcGIS Server
 - PostGIS + UMN MapServer
+- Others catching on . . .
 
 ---
 
@@ -43,9 +53,18 @@ Plan:
 
 ---
 
+[a.k.a. Year of The Tile, a.k.a. The Resurrection of Gerardus]
+
+---
+
 "GIS in the browser"
 
 2010:
+
+---
+
+![gis](https://www.dropbox.com/s/jt77sl10fv1dzkj/Screenshot%202016-05-31%2022.06.17.png?dl=1)
+*[via Dave Bouwman](http://www.slideshare.net/dbouwman/usability-in-the-geoweb-presentation/22-most_WebGIS_sites_are)*
 
 ---
 
@@ -60,10 +79,7 @@ It's actually a thing:
 ---
 
 ![buffer](https://www.dropbox.com/s/71c9b3yyibimmnm/dropchop1.gif?dl=1)
-
----
-
-[Try it out on the great state of Vermont](http://dropchop.io/?gist=e1028889229343fa8ed8a6e74d21f5d0)
+*[Try it out on the great state of Vermont](http://dropchop.io/?gist=e1028889229343fa8ed8a6e74d21f5d0)*
 
 ---
 
@@ -71,7 +87,7 @@ Powered by [turf.js](http://turfjs.org/)
 
 ---
 
-A javascript library for geoprocessing
+A javascript library for live, client-side geoprocessing
 
 ---
 
@@ -99,9 +115,20 @@ Javascript
 
 ---
 
+```
+function bindenize() {
+  document.getElementById('topbar').innerHTML = 'Random Biden quote'
+}
+```
+
+---
+
 GeoJSON
 
 ---
+
+Looks like this in a text editor:
+
 ```
 {
   "type": "Feature",
@@ -123,7 +150,7 @@ GeoJSON
 
 ---
 
-Looks like [this](http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b99523019a7aac&map=18/44.26249/-72.58071)
+Looks like [this](http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b99523019a7aac&map=18/44.26249/-72.58071) in a web browser:
 
 ---
 
@@ -138,7 +165,19 @@ Looks like [this](http://geojson.io/#id=gist:wboykinm/3f29b2d623992fa604b9952301
 
 ---
 
-Let's do a quick project, starting with [data creation](http://geojson.io/#map=8/43.997/-72.631)
+Let's do a quick project, starting with [data creation](http://geojson.io/#map=8/43.930/-72.724):
+
+---
+
+![draw1](https://www.dropbox.com/s/gqeza9d01holk84/draw1.gif?dl=1)
+
+---
+
+Then we [bring the data over to dropchop](http://dropchop.io/) and do some basic turf geoprocessing on it:
+
+---
+
+![process2](https://www.dropbox.com/s/ffr8zeabo5pulc8/process1.gif?dl=1)
 
 ---
 
@@ -150,15 +189,23 @@ Again, GIS in the web browser. LOL.
 
 ---
 
+![biden2](https://media.giphy.com/media/Kwi0Iu9MxxOgg/giphy.gif)
+
+---
+
 _What do end users care about geoprocessing?_
 
 ---
 
-Analysis in support of a task, or to tell a story
+Geoprocessing as part of a layperson's user experience:
+
+- in support of a task
+- telling a story
 
 ---
 
 Nearest neighbor: [Post-swimming brews](http://wboykinm.github.io/vcgi-turf-2016/client/)
+![near](https://www.dropbox.com/s/0dq4ima6l3402kw/Screenshot%202016-05-31%2022.52.32.png?dl=1)
 
 ---
 
@@ -167,7 +214,11 @@ Nearest neighbor: [Post-swimming brews](http://wboykinm.github.io/vcgi-turf-2016
 ---
 
 Distance along a line: [Meet me halfway](http://wboykinm.github.io/midpoint/)
+![distance](https://www.dropbox.com/s/6359nswwvbkw2iw/Screenshot%202016-05-31%2022.48.35.png?dl=1)
 
+---
+Buffering: [Race route water fountains](https://www.mapbox.com/bites/00082/?embed=true)
+![water](https://www.dropbox.com/s/3flhucj3h77etg9/Screenshot%202016-05-31%2022.45.16.png?dl=1)
 ---
 
 - How we got here
@@ -177,7 +228,12 @@ Distance along a line: [Meet me halfway](http://wboykinm.github.io/midpoint/)
 
 ---
 
-[node.js](http://nodejs.org/) is javascript, just built for servers. *turf works the same way [as a server-side tool](https://github.com/mapbox/turf-server-example)*
+[node.js](http://nodejs.org/) is javascript, just built for servers. *turf works the same way [when used as a server-side tool](https://github.com/mapbox/turf-server-example)*
+
+---
+
+But . . .
+![Data from hell](https://www.dropbox.com/s/g5njqmvgmr2udoj/Screenshot%202016-05-31%2022.16.45.png?dl=1)
 
 ---
 
@@ -186,6 +242,11 @@ A more complicated problem, wth bigger data, needs more power than a browser can
 ---
 
 [tile-reduce](https://github.com/mapbox/tile-reduce)
+
+---
+
+![tiles](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tiled_web_map_Stevage.png/640px-Tiled_web_map_Stevage.png)
+*[via Stevage](https://en.wikipedia.org/wiki/Tiled_web_map#/media/File:Tiled_web_map_Stevage.png)*
 
 ---
 
@@ -213,10 +274,17 @@ A more complicated problem, wth bigger data, needs more power than a browser can
 ---
 
 [Offline geoprocessing](http://www.fulcrumapp.com/blog/advanced-geospatial-calculations-with-turf/)
+![off](http://www.fulcrumapp.com/assets/img/blog/turf-js-libs.png)
+
+---
+
+[Linear referencing](http://openlayers.org/en/latest/examples/turf.html)
+![ref](https://www.dropbox.com/s/4dsv1ew8vzb249w/Screenshot%202016-05-31%2021.40.39.png?dl=1)
 
 ---
 
 [Realtime](https://www.mapbox.com/blog/geofencing-london/) [geoprocessing](https://www.mapbox.com/bites/00223/)
+![rt](https://www.dropbox.com/s/p4yrcusbrj0b532/Screenshot%202016-05-31%2021.42.37.png?dl=1)
 
 ---
 
@@ -236,5 +304,5 @@ Questions?
 
 Hit me up:
 
-- bill@faraday.io
-- @vtcraghead on Twitter
+- [bill@faraday.io](mailto:bill@faraday.io)
+- [@vtcraghead](https://twitter.com/vtcraghead)
