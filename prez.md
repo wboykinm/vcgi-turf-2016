@@ -69,7 +69,7 @@ GIS + the internet: a lightning history
 ---
 
 ![gis](https://www.dropbox.com/s/jt77sl10fv1dzkj/Screenshot%202016-05-31%2022.06.17.png?dl=1)
-*[via Dave Bouwman](http://www.slideshare.net/dbouwman/usability-in-the-geoweb-presentation/22-most_WebGIS_sites_are)*
+*via [Dave Bouwman](http://www.slideshare.net/dbouwman/usability-in-the-geoweb-presentation/22-most_WebGIS_sites_are)*
 
 ---
 
@@ -224,6 +224,7 @@ Distance along a line: [Meet me halfway](http://wboykinm.github.io/midpoint/)
 ---
 Buffering: [Race route water fountains](https://www.mapbox.com/bites/00082/?embed=true)
 ![water](https://www.dropbox.com/s/3flhucj3h77etg9/Screenshot%202016-05-31%2022.45.16.png?dl=1)
+*via [Morgan Herlocker](https://twitter.com/morganherlocker)*
 ---
 
 - How we got here
@@ -251,7 +252,7 @@ A more complicated problem, wth bigger data, needs more power than a browser can
 ---
 
 ![tiles](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tiled_web_map_Stevage.png/640px-Tiled_web_map_Stevage.png)
-*[via Stevage](https://en.wikipedia.org/wiki/Tiled_web_map#/media/File:Tiled_web_map_Stevage.png)*
+*via [Stevage](https://en.wikipedia.org/wiki/Tiled_web_map#/media/File:Tiled_web_map_Stevage.png)*
 
 ---
 
@@ -260,6 +261,7 @@ A more complicated problem, wth bigger data, needs more power than a browser can
 ---
 
 ![run](https://farm1.staticflickr.com/697/20479186309_df83c4d759_b.jpg)
+*via [Alex Barth](https://twitter.com/lxbarth)*
 
 ---
 
@@ -268,7 +270,7 @@ A more complicated problem, wth bigger data, needs more power than a browser can
 ---
 
 ![nepal](https://www.dropbox.com/s/fk4b1drr1xcma7q/Screenshot%202016-05-24%2017.10.57.png?dl=1)
-
+*via [Morgan Herlocker](https://twitter.com/morganherlocker)*
 ---
 
 - How we got here
@@ -280,16 +282,19 @@ A more complicated problem, wth bigger data, needs more power than a browser can
 
 [Offline geoprocessing](http://www.fulcrumapp.com/blog/advanced-geospatial-calculations-with-turf/)
 ![off](http://www.fulcrumapp.com/assets/img/blog/turf-js-libs.png)
+*via [Bryan McBride](https://twitter.com/brymcbride)*
 
 ---
 
 [Linear referencing](http://openlayers.org/en/latest/examples/turf.html)
 ![ref](https://www.dropbox.com/s/4dsv1ew8vzb249w/Screenshot%202016-05-31%2021.40.39.png?dl=1)
+*via [Tobias Sauerwein](https://twitter.com/tsauerwein)*
 
 ---
 
 [Realtime](https://www.mapbox.com/blog/geofencing-london/) [geoprocessing](https://www.mapbox.com/bites/00223/)
 ![rt](https://www.dropbox.com/s/p4yrcusbrj0b532/Screenshot%202016-05-31%2021.42.37.png?dl=1)
+*via [Molly Lloyd](https://twitter.com/mollymerp)*
 
 ---
 
